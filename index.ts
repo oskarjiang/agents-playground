@@ -1,33 +1,22 @@
 import "dotenv/config";
 import { Agent, run } from "@openai/agents";
 
+const agent = new Agent({
+  name: "Assistant",
+  instructions: "You are a helpful assistant",
+});
+
 if (!process.env.OPENAI_API_KEY) {
   console.error("OPENAI_API_KEY is not set. Check your .env file.");
   process.exit(1);
 }
 
-const historyTutorAgent = new Agent({
-  name: "History Tutor",
-  instructions:
-    "You provide assistance with historical queries. Explain important events and context clearly.",
-});
+const result = await run(
+  agent,
+  "Write a haiku about recursion in programming."
+);
+console.log(result.finalOutput);
 
-const mathTutorAgent = new Agent({
-  name: "Math Tutor",
-  instructions:
-    "You provide help with math problems. Explain your reasoning at each step and include examples",
-});
-
-const triageAgent = new Agent({
-  name: "Triage Agent",
-  instructions:
-    "You determine which agent to use based on the user's homework question",
-  handoffs: [historyTutorAgent, mathTutorAgent],
-});
-
-async function main() {
-  const result = await run(triageAgent, "What is the capital of France?");
-  console.log(result.finalOutput);
-}
-
-main().catch((err) => console.error(err));
+// Code within the code,
+// Functions calling themselves,
+// Infinite loop's dance.
