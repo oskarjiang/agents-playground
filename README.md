@@ -29,11 +29,12 @@ Key limits mirror Honk's: max 15 turns per session, max 3 sessions, verify outpu
 
 ## Try it
 
-Needs `ANTHROPIC_API_KEY` in `.env` at the repo root.
+With `ANTHROPIC_API_KEY` set in `.env`:
 
 ```sh
-npx tsx clonk/demo/setup-demo.ts     # creates a toy repo with a failing test, prints the command
-npx tsx clonk/index.ts "<demo-path>" "The add function in math.js is broken and its test fails. Fix it."
+npm install
+npm run demo     # creates a toy repo with a failing test, prints the command
+npm start -- "<demo-path>" "The add function in math.js is broken and its test fails. Fix it."
 ```
 
 On success it pushes a `clonk/<timestamp>` branch into the target repo — inspect it there with `git diff main...clonk/<timestamp>`. Works against any local git repo whose checks are npm scripts.

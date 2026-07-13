@@ -18,7 +18,7 @@ if (!process.env.ANTHROPIC_API_KEY) {
 const [repoPath, ...taskWords] = process.argv.slice(2);
 const task = taskWords.join(" ");
 if (!repoPath || !task) {
-  console.error('Usage: npx tsx clonk/index.ts <path-to-git-repo> "<task>"');
+  console.error('Usage: npm start -- <path-to-git-repo> "<task>"');
   process.exit(1);
 }
 

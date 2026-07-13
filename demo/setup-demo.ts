@@ -34,4 +34,4 @@ git("add", "-A");
 git("commit", "--quiet", "-m", "Initial commit");
 
 console.log(`Demo repo with a failing test created at:\n  ${dir}`);
-console.log(`\nRun Clonk against it:\n  npx tsx clonk/index.ts "${dir}" "The add function in math.js is broken and its test fails. Fix it."`);
+console.log(`\nRun Clonk against it:\n  npm start -- "${dir}" "The add function in math.js is broken and its test fails. Fix it."`);
